@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="modules/layout :: html(content = ~{::content}, footer = ~{modules/footer})">
+<th:block th:fragment="content">
+  <div class="prose !max-w-none min-h-screen w-full bg-white rounded"
+       th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}">
+    <h1 th:text="${post.spec.title}" class="pt-4 pl-4 pr-4"></h1>
+    <th:block>
+      <article class="p-4" th:utext="${post.content.content}">
+      </article>
+    </th:block>
+  </div>
+</th:block>
+</html>
+  

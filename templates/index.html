@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content}, footer = ~{modules/footer})}">
+<th:block th:fragment="content">
+    <!-- 文章列表 -->
+    <section class="min-h-screen w-full list-inside article-list">
+      <article class="bg-white h-auto rounded-lg min-w-full p-4" th:each="post : ${posts.items}"
+               style="display: flex;justify-content: flex-start; gap: 20px">
+        <!-- 文章图片 -->
+        <!--<section class="h-full w-2/12">
+          <div>
+            <a th:href="@{${post.status.permalink}}" class="h-full">
+              <img
+                th:src="'https://imgapi.xl0408.top/index.php?pageid=' + ${post.metadata.name}"
+                 loading=lazy th:alt="${post.spec.title}"
+                class="lazyLoading h-full">
+            </a>
+          </div>
+        </section>-->
+        <!-- 文章信息 -->
+        <section class="w-10/12">
+
+          <!-- 文章标签 -->
+          <!--<th:block th:if="${not #lists.isEmpty(post.tags)}">
+            <div th:each="tag : ${post.tags}" class="tag-container">
+              <header class="tag-category">
+                <a class="tag-category-link"
+                   th:href="@{${tag.status.permalink}}"
+                   th:text="${'#' + tag.spec.displayName}">
+                </a>
+              </header>
+            </div>
+          </th:block>-->
+
+          <!-- 文章标题 -->
+          <section>
+            <a th:class="article-title"
+               th:text="${post.spec.title}"
+               th:href="${post.status.permalink}"
+               class="hover:text-gray-600 hover:underline">
+            </a>
+          </section>
+
+
+          <!-- 摘要 -->
+          <section>
+            <div th:class="article-excerpt" th:text="${post.status.excerpt}">
+            </div>
+          </section>
+
+
+          <!-- 其他信息 -->
+          <footer class="article-footer">
+            <!-- 发布时间 -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock"
+                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor"
+                 fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <circle cx="12" cy="12" r="9"/>
+              <polyline points="12 7 12 12 15 15"/>
+            </svg>
+            <time class="align-middle"
+                  th:text="${'发布于 ' + #dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></time>
+
+            <!-- 文章分类 -->
+            <th:block th:if="${not #lists.isEmpty(post.categories)}">
+              <div th:each="category : ${post.categories}" class="article-container">
+                <header class="article-category">
+                  <a class="article-category-link"
+                     th:href="@{${category.status.permalink}}"
+                     th:text="'#' + ${category.spec.displayName}">
+                  </a>
+                </header>
+              </div>
+            </th:block>
+          </footer>
+        </section>
+      </article>
+    </section>
+
+    <!-- 翻页 -->
+    <th:block th:replace="modules/pagination"></th:block>
+
+</th:block>
+
+
+</html>

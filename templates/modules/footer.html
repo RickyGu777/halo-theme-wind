@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<th:block th:fragment="footer">
+  <div class="bottom-0 h-20 text-sm min-w-full pt-3 block article-footer">
+    <div style="display: flex;justify-content: space-between">
+      <div>
+        <section>
+          &copy; [[${'2023 '+site.title}]]
+        </section>
+        <section>
+          <a href="https://beian.miit.gov.cn/">[[${theme.config.base.icp_record}]]</a>
+        </section>
+        <section>
+          <a href="http://www.beian.gov.cn/">[[${theme.config.base.ps_record}]]</a>
+        </section>
+      </div>
+      <div>
+        <section>
+          <section class="text-right">
+            Powered by <a class="clickable" href="https://halo.run/" target="_blank">Halo</a>
+          </section>
+          <section class="text-right">
+            Theme by <a class="clickable" href="https://github.com/RickyGu777/halo-theme-wind" target="_blank">Wind</a>
+          </section>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</th:block>
+</html>
+  
