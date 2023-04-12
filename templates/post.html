@@ -6,7 +6,7 @@
        th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}">
     <h1 th:text="${post.spec.title}" class="pt-4 pl-4 pr-4"></h1>
     <th:block>
-      <article class="p-4" th:utext="${post.content.content}">
+      <article class="p-4 article-content" th:utext="${post.content.content}">
       </article>
     </th:block>
   </div>

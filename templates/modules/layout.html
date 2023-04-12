@@ -31,5 +31,34 @@
     //     Math.round(Math.random() * 100) + '%,' +
     //     Math.round(Math.random() * 80) + '%)';
     // }
+    function findParent(el, e) {
+        for (let i = el.length - 1; i > 1; i--) {
+            if (el[i].localName > e.localName) {
+                return el[i];
+            }
+        }
+        return null;
+    }
+
+    let catalogs = document.querySelectorAll(".article-content h1[id], .article-content h2[id], .article-content h3[id], .article-content h4[id], .article-content h5[id], .article-content h6[id]");
+    console.log(catalogs)
+    let catalogElement = document.querySelector("#TableOfContents");
+    let l = [];
+    catalogs.forEach(e => {
+        if (l.length === 0) {
+            let ol = document.createElement("ol");
+            catalogElement.appendChild(ol);
+            l.push(ol)
+        } else {
+
+        }
+        let lastElement = l[l.length - 1];
+        let li = document.createElement("li");
+        ol.appendChild(li);
+        let a = document.createElement("a");
+        a.innerText = e.outerText;
+        li.appendChild(a)
+
+    })
 </script>
 </html>
